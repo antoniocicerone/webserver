@@ -42,8 +42,8 @@ RUN echo "memory_limit=-1" >> /etc/php/${PHP_VERSION_INSTALL}/apache2/conf.d/dev
 
 VOLUME  ${WEBSERVER_HOME}
 
-COPY index.html index.html
-COPY info.php info.php
+COPY index.html ${WEBSERVER_HOME}/index.html
+COPY info.php ${WEBSERVER_HOME}/info.php
 
 EXPOSE 80 443
 
