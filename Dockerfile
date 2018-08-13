@@ -39,8 +39,8 @@ RUN ln -sf /dev/stdout ${APACHE_LOG_DIR}/access.log \
 
 VOLUME  ${WEBSERVER_HOME}
 
-COPY index.html ${WEBSERVER_HOME}
-COPY info.php ${WEBSERVER_HOME}
+COPY index.html ${WEBSERVER_HOME}/index.html
+COPY info.php ${WEBSERVER_HOME}/info.php
 
 EXPOSE 80 443
 
