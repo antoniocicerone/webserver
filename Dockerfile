@@ -1,13 +1,8 @@
 # $ docker build -t webserver:latest .
-# $ docker container run -d --name php56v3 -p 80:80 -v ~/Desktop/aaa:/var/www/html webserver
-# docker pull antoniocicerone/webserver
 
 FROM debian:9.5
 
-
 LABEL maintainer="antoniociceroneweb@gmail.com"
-
-
 
 #todo controlla
 ENV APACHE_RUN_USER www-data
@@ -15,7 +10,6 @@ ENV APACHE_RUN_GROUP www-data
 ENV APACHE_LOG_DIR /var/log/apache2
 ENV APACHE_LOCK_DIR /var/lock/apache2
 ENV APACHE_PID_FILE /var/run/apache2.pid
-
 
 #todo inserire file add.ini con aggiunta date.timezone nella cartella /etc/php/5.6/apache2/conf.d
 
@@ -38,8 +32,6 @@ RUN apt-get update \
 	&& php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
 
 # mettere i log di apache in una cartella e anche .ini
-
-
 
 WORKDIR /var/www/html
 
