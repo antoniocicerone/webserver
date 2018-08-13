@@ -4,11 +4,8 @@ FROM debian:9.5
 
 LABEL maintainer="antoniociceroneweb@gmail.com"
 
-#todo: da finire
-ENV APACHE_RUN_USER www-data
-ENV APACHE_RUN_GROUP www-data
-
 ENV APACHE_LOG_DIR /var/log/apache2
+
 ENV PHP_VERSION_INSTALL 5.6
 
 
