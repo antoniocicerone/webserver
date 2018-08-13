@@ -8,6 +8,10 @@ ENV APACHE_LOG_DIR /var/log/apache2
 
 ENV PHP_VERSION_INSTALL 5.6
 
+ENV WEBSERVER_HOME /var/www/html
+
+
+WORKDIR ${WEBSERVER_HOME}
 
 #todo: inserire file add.ini con aggiunta date.timezone nella cartella /etc/php/5.6/apache2/conf.d
 
@@ -33,10 +37,10 @@ RUN apt-get update \
 RUN ln -sf /dev/stdout ${APACHE_LOG_DIR}/access.log \
 	&& ln -sf /dev/stderr ${APACHE_LOG_DIR}/error.log
 
-WORKDIR /var/www/html
+VOLUME  ${WEBSERVER_HOME}
 
-COPY index.html /var/www/html/
-COPY info.php /var/www/html/
+COPY index.html ${WEBSERVER_HOME}
+COPY info.php ${WEBSERVER_HOME}
 
 EXPOSE 80 443
 
