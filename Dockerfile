@@ -4,12 +4,11 @@ FROM debian:9.5
 
 LABEL maintainer="antoniociceroneweb@gmail.com"
 
-#todo controlla
+
 ENV APACHE_RUN_USER www-data
 ENV APACHE_RUN_GROUP www-data
 ENV APACHE_LOG_DIR /var/log/apache2
-ENV APACHE_LOCK_DIR /var/lock/apache2
-ENV APACHE_PID_FILE /var/run/apache2.pid
+
 
 #todo inserire file add.ini con aggiunta date.timezone nella cartella /etc/php/5.6/apache2/conf.d
 
@@ -31,7 +30,9 @@ RUN apt-get update \
 	&& php -r "copy('https://getcomposer.org/installer', '/tmp/composer-setup.php');" \
 	&& php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
 
-# mettere i log di apache in una cartella e anche .ini
+# forward request and error logs to docker log collector
+RUN ln -sf /dev/stdout ${APACHE_LOG_DIR}/access.log \
+	&& ln -sf /dev/stderr ${APACHE_LOG_DIR}/error.log
 
 WORKDIR /var/www/html
 
