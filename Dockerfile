@@ -37,8 +37,8 @@ RUN ln -sf /dev/stdout ${APACHE_LOG_DIR}/access.log \
 
 WORKDIR /var/www/html
 
-ADD index.html /var/www/html/index.html
-ADD info.php /var/www/html/info.php
+COPY index.html /var/www/html/
+COPY info.php /var/www/html/
 
 EXPOSE 80 443
 
