@@ -4,13 +4,14 @@ FROM debian:9.5
 
 LABEL maintainer="antoniociceroneweb@gmail.com"
 
-
+#todo: da finire
 ENV APACHE_RUN_USER www-data
 ENV APACHE_RUN_GROUP www-data
+
 ENV APACHE_LOG_DIR /var/log/apache2
 
 
-#todo inserire file add.ini con aggiunta date.timezone nella cartella /etc/php/5.6/apache2/conf.d
+#todo: inserire file add.ini con aggiunta date.timezone nella cartella /etc/php/5.6/apache2/conf.d
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends curl \
