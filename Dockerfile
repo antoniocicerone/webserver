@@ -35,8 +35,8 @@ RUN apt-get update \
 
 WORKDIR /var/www/html
 
-COPY index.html index.html
-COPY info.php info.php
+COPY index.html /var/www/html/index.html
+COPY info.php /var/www/html/info.php
 
 EXPOSE 80 443
 
