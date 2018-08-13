@@ -2,7 +2,7 @@
 
 FROM debian:9.5
 
-LABEL maintainer="antoniociceroneweb@gmail.com"
+LABEL maintainer="Antonio Cicerone <antoniociceroneweb@gmail.com>"
 
 ENV APACHE_LOG_DIR /var/log/apache2
 
