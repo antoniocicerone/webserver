@@ -13,7 +13,6 @@ ENV WEBSERVER_HOME /var/www/html
 
 WORKDIR ${WEBSERVER_HOME}
 
-#todo: inserire file add.ini con aggiunta date.timezone nella cartella /etc/php/5.6/apache2/conf.d
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends curl \
@@ -36,6 +35,10 @@ RUN apt-get update \
 # forward request and error logs to docker log collector
 RUN ln -sf /dev/stdout ${APACHE_LOG_DIR}/access.log \
 	&& ln -sf /dev/stderr ${APACHE_LOG_DIR}/error.log
+	
+#add timezone and memory_limit
+RUN echo "date.timezone=Europe/Rome" >> /etc/php/${PHP_VERSION_INSTALL}/apache2/conf.d/dev.ini
+RUN echo "memory_limit=-1" >> /etc/php/${PHP_VERSION_INSTALL}/apache2/conf.d/dev.ini	
 
 VOLUME  ${WEBSERVER_HOME}
 
